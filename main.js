@@ -1,60 +1,50 @@
-alert('bienvenido al Piedras, Papel, Tijeras o ¡FERRAN!')
-
-let jugador = prompt('por favor ingrese su nombre') 
-
-let pc;  
-
-alert('¡hola ' + jugador + ' Comencemos!!')
-
-function random() {
-    return Math.ceil(Math.random()*4)
+class Prod {
+    constructor(litraje, tipo, color, valor) {
+        this.litraje = litraje;
+        this.color = color;
+        this.tipo = tipo;
+        this.valor = valor;
+    }
 }
 
-jugador = prompt('elegí: 1 - Piedra, 2 - Papel, 3 - Tijera, 4 - FERRAN')
-pc = random();
-alert('vos elegiste ' + eleccion(jugador))
-alert('pc eligió ' + eleccion(pc))
+let Prods = [];
 
-if(jugador == pc) {
-    alert('¡EMPATE!')
-}else if(jugador == 1 && pc == 3) {
-    alert('HAS GANADOOO!!!')
-}else if(jugador == 2 && pc == 1) {
-    alert('HAS GANADOOO!!!')
-}else if(jugador == 3 && pc == 2) {
-    alert('HAS GANADOOO!!!')
-}else if(jugador == 4 && pc == 1) {
-    alert('HAS GANADOOO FERRAN ES INVENCIBLE MUAJAJA!!!')
-}else if(jugador == 4 && pc == 2) {
-    alert('HAS GANADOOO FERRAN ES INVENCIBLE MUAJAJA!!!')
-}else if(jugador == 4 && pc == 3) {
-    alert('HAS GANADOOO FERRAN ES INVENCIBLE MUAJAJA!!!')
-}else if(pc == 1 && jugador == 3) {
-    alert('HAS PERDIDOOO JAJJJAJAJJA')
-}else if(pc == 2 && jugador == 1) {
-    alert('HAS PERDIDOOO JAJJJAJAJJA')
-}else if(pc == 3 && jugador == 2) {
-    alert('HAS PERDIDOOO JAJJJAJAJJA')
-}else if(pc == 4 && jugador == 1) {
-    alert('HAS PERDIDOOO FERRAN ES INVENCIBLE MUAJAJA!!!')
-}else if(pc == 4 && jugador == 2) {
-    alert('HAS PERDIDOOO FERRAN ES INVENCIBLE MUAJAJA!!!')
-}else if(pc == 4 && jugador == 3) {
-    alert('HAS PERDIDOOO FERRAN ES INVENCIBLE MUAJAJA!!!')
-}
+let pintura1 = new Prod('5', 'verde', 'mate', 500);
+let pintura2 = new Prod('15', 'rojo', 'metalizado', 2500);
+let pintura3 = (new Prod('2', 'fucsia', 'mate', 300))
+let pintura4 = (new Prod('50', 'negro', 'metalizado', 5000))
+let pintura5 = (new Prod('1', 'oro', 'metal natural', 500000))
+let pintura6 = (new Prod('10', 'blanco', 'metalizado', 2000))
+
+alert('¡Hola bienvenido a Coder pinturas!')
+    let resp = prompt('Desea agregar algun producto a su compra? si no').toUpperCase()
+    if (resp == 'SI') {
+        agregar()
+    } else if (resp == 'NO') {
+        alert('gracias vuelva pronto')
+    } else {
+        resp = alert('ingresa algo valido. si o no')
+    }
 
 
-function eleccion(elegido) {
-    let resultado = ''
-    if (elegido == 1 ){
-        resultado = 'Piedra'
-    }else if(elegido == 2){
-        resultado = 'Papel'
-}else if(elegido == 3){
-    resultado = 'tijeras'
-}else if(elegido == 4){
-    resultado = 'FERRAN'
-}else{
-    resultado = 'elegi un numero correcto che aparato🤣🤣🤣🤣🤣'
-} return resultado
-}
+
+    function agregar() {
+        let nombrePintura = prompt('ingresa el color de pintura que quieras').toLowerCase();
+        let pinturaEncontrada = buscarProd(nombrePintura);
+    
+        if (pinturaEncontrada) {
+            prods.push(pinturaEncontrada);
+            console.log('la pintura fue encontrada y agregada correctamente al carrito!');
+        } else {
+            console.log('No se encontró la pintura.');
+        }
+    }
+    
+    function buscarProd(nombre) {
+        for (let prod of Prods) {
+            if (prod.color.toLowerCase() === nombre.toLowerCase()) {
+                return prod; 
+            }
+        }
+        return null; 
+    }
